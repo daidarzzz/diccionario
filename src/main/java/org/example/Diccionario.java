@@ -22,7 +22,8 @@ public class Diccionario {
     }
 
     public static String traduce(String clave){
-        return mapa.get(clave);
+        if (mapa.containsKey(clave)) return mapa.get(clave);
+        else return null;
     }
     public static String palabraAleatoria(){
         int indice = aleatorio.nextInt(0, listaIndicesFinal.size());
@@ -31,10 +32,13 @@ public class Diccionario {
         return palabra;
     }
     public static char primeraLetraTraduccion(String clave){
-
-        String valor = mapa.get(clave);
-        return valor.charAt(0);
-
+        if (clave == null || !mapa.containsKey(clave)) {
+            return ' ';
+        }
+        else {
+            String valor = mapa.get(clave);
+            return valor.charAt(0);
+        }
     }
 
 

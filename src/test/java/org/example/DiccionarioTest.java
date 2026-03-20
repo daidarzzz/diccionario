@@ -37,6 +37,13 @@ class DiccionarioTest {
     }
 
     @Test
+    void traduceCasoExtremo(){
+        //Intenta traducir una palabra que no existe, debe de devolver null
+        String resultado = Diccionario.traduce("Mesa");
+        assertNull(resultado);
+    }
+
+    @Test
     void palabraAleatoria() {
         //En este test, hacemos que la lista de índices solo tenga "Mesa", forzando
         // a que sea la única opción para la palabra aleatoria, y después comprobamos
@@ -59,6 +66,20 @@ class DiccionarioTest {
 
         char letra = Diccionario.primeraLetraTraduccion("Mesa");
         assertEquals('T', letra);
+
+    }
+
+    @Test
+    void primeraLetraTraduccionCasoExtremo() {
+
+        //Busco una palabra que no esté en el mapa, por lo cual, deberá devolver un espacio (' ')
+        Diccionario.nuevoPar("Mesa@Table");
+
+        char letra = Diccionario.primeraLetraTraduccion("castañas");
+        assertEquals(' ', letra);
+
+        char letra2 = Diccionario.primeraLetraTraduccion(null);
+        assertEquals(' ', letra2);
 
     }
 }
