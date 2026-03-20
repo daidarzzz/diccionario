@@ -22,7 +22,6 @@ public class Diccionario {
     }
 
     public static String traduce(String clave){
-
         return mapa.get(clave);
     }
     public static String palabraAleatoria(){
